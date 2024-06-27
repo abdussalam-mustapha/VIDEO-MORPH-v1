@@ -7,8 +7,8 @@ import Particle from "@/components/ui/Particle";
 export default function Home() {
   return (
     <main className="p-4 relative h-screen">
-     <Particle />
-      <div className=" flex flex-col justify-center items-center z-[1000]">
+      <Particle />
+      <div className="relative z-[1000] flex flex-col justify-center items-center">
         <div className="flex flex-col justify-center items-center">
           <p className="text-4xl my-24">
             Convert your Video Format Online Easily
@@ -26,6 +26,3 @@ export default function Home() {
     </main>
   );
 }
-
-// https://ffmpegwasm.netlify.app/docs/api/ffmpeg/classes/FFmpeg
-// https://ffmpegwasm.netlify.app/docs/api/util/
