@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main className="p-4 relative h-screen">
      <Particle />
-      <div className=" flex flex-col justify-center items-center z-20">
+      <div className=" flex flex-col justify-center items-center z-[1000]">
         <div className="flex flex-col justify-center items-center">
           <p className="text-4xl my-24">
             Convert your Video Format Online Easily
