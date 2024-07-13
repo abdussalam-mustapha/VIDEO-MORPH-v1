@@ -71,7 +71,7 @@ const handleFileChange = (event) => {
                 <>
                     <input type="file" onChange={handleFileChange} accept="video/mp4" />
                     <button onClick={transcode} disabled={!file}>Transcode Video</button>
-                    <video ref={videoRef} controls></video>
+                    
                     <p ref={messageRef}></p>
                     <p>Open Developer Tools (Ctrl+Shift+I) to View Logs</p>
                 </>
