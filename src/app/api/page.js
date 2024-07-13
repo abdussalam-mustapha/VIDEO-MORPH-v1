@@ -28,7 +28,7 @@ const handler = nextConnect()
       });
 
       const originalFileName = req.file.originalname.split('.').slice(0, -1).join('.');
-      const convertedFileName = `${uuidv4()}-${originalFileName}.webm`; // Always convert to webm
+      const convertedFileName = `${uuidv4()}-${originalFileName}.webm`; 
       const convertedFilePath = path.join(process.cwd(), 'public', 'converted', convertedFileName);
       
       fs.writeFileSync(convertedFilePath, response.data);

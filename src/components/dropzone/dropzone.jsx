@@ -58,7 +58,7 @@ const Dropzone = () => {
   const [defaultValues, setDefaultValues] = useState("video");
   const [selected, setSelected] = useState("...");
   const acceptedFiles = {
-    "video/*": videoExtensions.map(ext => `.${ext}`),
+    "video/*": [],
   };
 
   const reset = () => {
@@ -180,22 +180,13 @@ const Dropzone = () => {
     }
   }, [actions]);
 
-  const load = async () => {
-    try {
-      const ffmpegResponse = await loadFfmpeg();
-      if (ffmpegResponse instanceof FFmpeg) {
-        ffmpegRef.current = ffmpegResponse;
-        setIsLoaded(true);
-      } else {
-        throw new Error("Loaded module is not an instance of FFmpeg");
-      }
-    } catch (error) {
-      console.error("Error loading FFmpeg:", error);
-      setIsLoaded(false);
-    }
-  };
-
   useEffect(() => {
+    const load = async () => {
+      const ffmpeg_response = await loadFfmpeg();
+      ffmpegRef.current = ffmpeg_response;
+      setIsLoaded(true);
+    };
+
     load();
   }, []);
 

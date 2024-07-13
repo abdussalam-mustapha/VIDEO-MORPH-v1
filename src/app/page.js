@@ -1,12 +1,16 @@
-"use client";
+"use client"
+
 
 import { useState } from 'react';
-import axios from 'axios';
 import Particle from '@/components/ui/Particle';
 import Dropzone from "../components/dropzone/dropzone"
 
-export default function Home() {
+
  
+  
+
+
+export default function Home() {
   
 
   return (
@@ -25,8 +29,10 @@ export default function Home() {
             </p>
           </div>
         </div>
+
         <Dropzone />
        </div>
+
     </main>
   );
 }
