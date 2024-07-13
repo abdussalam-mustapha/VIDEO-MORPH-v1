@@ -58,7 +58,7 @@ const Dropzone = () => {
   const [defaultValues, setDefaultValues] = useState("video");
   const [selected, setSelected] = useState("...");
   const acceptedFiles = {
-    "video/*": videoExtensions.map(ext => `.${ext}`),
+    "video/*": [],
   };
 
   const reset = () => {
