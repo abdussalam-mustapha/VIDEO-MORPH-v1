@@ -43,12 +43,12 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between items-center pt-6 text-[#fff] z-[1000] relative">
-      {() => {
+      
         <section className="flex space-x-4">
           <p className="text-[#fff]">V</p>
           <p className="text-[#fff]">M</p>
         </section>
-      }}
+      
       <div className="md:hidden">
         <MenuOutlined onClick={toggleMenu} className="cursor-pointer" />
       </div>

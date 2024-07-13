@@ -1,10 +1,14 @@
 "use client";
 
-import Image from "next/image";
-import Dropzone from "../components/dropzone/dropzone";
-import Particle from "@/components/ui/Particle";
+import { useState } from 'react';
+import axios from 'axios';
+import Particle from '@/components/ui/Particle';
+import Dropzone from "../components/dropzone/dropzone"
 
 export default function Home() {
+ 
+  
+
   return (
     <main className="p-4 relative h-screen">
       <Particle />
@@ -22,7 +26,7 @@ export default function Home() {
           </div>
         </div>
         <Dropzone />
-      </div>
+       </div>
     </main>
   );
 }
