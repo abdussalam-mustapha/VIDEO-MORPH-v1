@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import Particle from '@/components/ui/Particle';
 import Dropzone from "../components/dropzone/dropzone"
+import VideoUpload from '@/components/video-converion/videoUploadMain';
 
 
  
@@ -30,7 +31,7 @@ export default function Home() {
           </div>
         </div>
 
-        <Dropzone />
+        <VideoUpload />
        </div>
 
     </main>
