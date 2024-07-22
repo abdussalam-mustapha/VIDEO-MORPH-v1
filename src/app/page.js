@@ -3,7 +3,6 @@
 
 import { useState } from 'react';
 import Particle from '@/components/ui/Particle';
-import Dropzone from "../components/dropzone/dropzone"
 import VideoUpload from '@/components/video-converion/videoUploadMain';
 
 
