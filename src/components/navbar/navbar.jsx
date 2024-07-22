@@ -31,31 +31,21 @@ const Navbar = () => {
       key: "",
       dropdownItems: [{ key: "pricing", label: "coming soon" }],
     },
-    // {
-    //   label: 'Resources',
-    //   key: 'resources',
-    //   dropdownItems: [
-    //     { key: 'resources', label: 'about' },
-    //     { key: 'Graphic Design', label: 'documentation' },
-    //   ],
-    // },
   ];
 
   return (
     <div className="flex justify-between items-center pt-6 text-[#fff] z-[1000] relative">
-      
-        <section className="flex space-x-4">
-          <p className="text-[#fff]">V</p>
-          <p className="text-[#fff]">M</p>
-        </section>
-      
+      <section className="flex space-x-4">
+        <p className="text-[#fff]">V</p>
+        <p className="text-[#fff]">M</p>
+      </section>
       <div className="md:hidden">
         <MenuOutlined onClick={toggleMenu} className="cursor-pointer" />
       </div>
       <div
         className={`md:flex ${
           menuOpen ? "block" : "hidden"
-        } absolute md:relative right-0 top-16 md:top-auto bg-white md:bg-transparent w-full md:w-auto z-50`}
+        } absolute md:relative right-0 top-16 md:top-auto bg-white md:bg-transparent w-full md:w-auto z-50 `}
       >
         <ul className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 p-4 md:p-0">
           {items.map((item, index) => (
@@ -68,6 +58,7 @@ const Navbar = () => {
                         <a
                           href={`/${dropdownItem.key}`}
                           onClick={(e) => onClick(e, dropdownItem)}
+                          className="text-black"
                         >
                           {dropdownItem.label}
                         </a>
@@ -78,7 +69,7 @@ const Navbar = () => {
               >
                 <a
                   onClick={(e) => e.preventDefault()}
-                  className="flex items-center"
+                  className="flex items-center text-black md:text-white"
                 >
                   <Space>
                     <span>{item.label}</span>
@@ -89,10 +80,14 @@ const Navbar = () => {
             </li>
           ))}
           <li className="md:hidden">
-            <a href="#">Login</a>
+            <a href="#" className="text-black">
+              Login
+            </a>
           </li>
           <li className="md:hidden">
-            <a href="#">Signup</a>
+            <a href="#" className="text-black">
+              Signup
+            </a>
           </li>
         </ul>
       </div>

@@ -1,18 +1,10 @@
-"use client"
+"use client";
 
-
-import { useState } from 'react';
-import Particle from '@/components/ui/Particle';
-import VideoUpload from '@/components/video-converion/videoUploadMain';
-
-
- 
-  
-
+import { useState } from "react";
+import Particle from "@/components/ui/Particle";
+import ConvertVideo from "@/components/video-converion/convertVideo";
 
 export default function Home() {
-  
-
   return (
     <main className="p-4 relative h-screen">
       <Particle />
@@ -23,17 +15,14 @@ export default function Home() {
           </p>
           <div className="w-[80%] py-20">
             <p className="text-center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam,
+              Transform Your Videos with Ease Experience the future of video
+              conversion with our cutting-edge transcoding service. 
             </p>
           </div>
         </div>
 
-        <VideoUpload />
-       </div>
-
+        <ConvertVideo />
+      </div>
     </main>
   );
 }
-
