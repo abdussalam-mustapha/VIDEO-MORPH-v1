@@ -26,7 +26,7 @@ export default function Home() {
     formData.append("to", format);
 
     try {
-      const response = await axios.post("https://video-morph-transcoder.onrender.com/convert", formData, {
+      const response = await axios.post("", formData, {
         responseType: "blob",
       });
       const url = window.URL.createObjectURL(new Blob([response.data]));
