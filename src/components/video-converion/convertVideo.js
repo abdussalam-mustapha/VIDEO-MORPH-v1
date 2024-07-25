@@ -28,6 +28,7 @@ export default function Home() {
       const response = await axios.post("https://video-morph-transcoder.onrender.com/convert", formData, {
         responseType: "blob",
       });
+      console.log("Response:", response);
       const url = window.URL.createObjectURL(new Blob([response.data]));
       setDownloadLink(url);
     } catch (error) {
@@ -81,11 +82,7 @@ export default function Home() {
         <div className="form-group mt-4">
           <button className="flex items-center bg-red-500 text-white p-2 rounded-md">
             <FaDownload className="mr-2" />
-            <a
-              className="text-white"
-              href={downloadLink}
-              download="converted_video"
-            >
+            <a className="text-white" href={downloadLink} download="converted_video">
               Download Converted Video
             </a>
           </button>
