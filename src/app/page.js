@@ -10,8 +10,8 @@ export default function Home() {
       <Particle />
       <div className="relative z-[1000] flex flex-col justify-center items-center">
         <div className="flex flex-col justify-center items-center">
-          <p className="text-4xl my-24">
-            Convert your Video Format Online Easily
+          <p className="text-4xl my-24 text-center">
+            VIDEO MORPH
           </p>
           <div className="w-[80%] py-20">
             <p className="text-center">
