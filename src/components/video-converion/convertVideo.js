@@ -3,10 +3,11 @@ import axios from "axios";
 import { useDropzone } from "react-dropzone";
 import { FaUpload, FaDownload } from "react-icons/fa";
 
-export default function Home() {
+export default function ConvertVideo() {
   const [file, setFile] = useState(null);
   const [format, setFormat] = useState("mp4");
   const [downloadLink, setDownloadLink] = useState("");
+  const [downloadFilename, setDownloadFilename] = useState("");
 
   const onDrop = useCallback((acceptedFiles) => {
     setFile(acceptedFiles[0]);
@@ -31,6 +32,12 @@ export default function Home() {
       console.log("Response:", response);
       const url = window.URL.createObjectURL(new Blob([response.data]));
       setDownloadLink(url);
+
+    
+      const originalName = file.name;
+      const baseName = originalName.substring(0, originalName.lastIndexOf('.'));
+      const newFilename = `${baseName}.${format}`;
+      setDownloadFilename(newFilename);
     } catch (error) {
       console.error("Error during conversion:", error);
     }
@@ -82,7 +89,7 @@ export default function Home() {
         <div className="form-group mt-4">
           <button className="flex items-center bg-red-500 text-white p-2 rounded-md">
             <FaDownload className="mr-2" />
-            <a className="text-white" href={downloadLink} download="converted_video">
+            <a className="text-white" href={downloadLink} download={downloadFilename}>
               Download Converted Video
             </a>
           </button>
