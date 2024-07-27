@@ -49,9 +49,9 @@ export default function ConvertVideo() {
       }
     } catch (error) {
       console.error("Error during conversion:", error);
-      setError("An error occurred during the video conversion. Please try again."); // Set error message
+      setError("An error occurred during the video conversion. Please try again."); 
     } finally {
-      setIsLoading(false); // Stop loading spinner
+      setIsLoading(false); 
     }
   };
 
@@ -68,11 +68,11 @@ export default function ConvertVideo() {
           <input {...getInputProps()} />
           <FaUpload className="text-4xl text-gray-400 mx-auto mb-2" />
           {isDragActive ? (
-            <p className="text-gray-600">Drop the files here...</p>
+            <p className="text-white">Drop the files here...</p>
           ) : (
-            <p className="text-gray-600">Drag & drop a file here, or click to select a file</p>
+            <p className="text-white">Drag & drop a file here, or click to select a file</p>
           )}
-          {file && <p className="mt-2 text-gray-700">{file.name}</p>}
+          {file && <p className="mt-2 text-white">{file.name}</p>}
         </div>
         <div className="form-group mt-4">
           <label htmlFor="to" className="block mb-2">
