@@ -1,13 +1,15 @@
 import React, { useState, useCallback } from "react";
 import axios from "axios";
 import { useDropzone } from "react-dropzone";
-import { FaUpload, FaDownload } from "react-icons/fa";
+import { FaUpload, FaDownload, FaSpinner } from "react-icons/fa";
 
 export default function ConvertVideo() {
   const [file, setFile] = useState(null);
   const [format, setFormat] = useState("mp4");
   const [downloadLink, setDownloadLink] = useState("");
   const [downloadFilename, setDownloadFilename] = useState("");
+  const [isLoading, setIsLoading] = useState(false); 
+  const [error, setError] = useState(""); 
 
   const onDrop = useCallback((acceptedFiles) => {
     setFile(acceptedFiles[0]);
@@ -21,25 +23,35 @@ export default function ConvertVideo() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
+    setError(""); 
+
     const formData = new FormData();
     formData.append("file", file);
     formData.append("to", format);
 
     try {
-      const response = await axios.post("https://video-morph-transcoder.onrender.com/convert", formData, {
+      const response = await axios.post("http://localhost:4000/convert", formData, {
         responseType: "blob",
       });
-      console.log("Response:", response);
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      setDownloadLink(url);
 
-    
-      const originalName = file.name;
-      const baseName = originalName.substring(0, originalName.lastIndexOf('.'));
-      const newFilename = `${baseName}.${format}`;
-      setDownloadFilename(newFilename);
+      if (response.status === 200) {
+        console.log("Response:", response);
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        setDownloadLink(url);
+
+        const originalName = file.name;
+        const baseName = originalName.substring(0, originalName.lastIndexOf('.'));
+        const newFilename = `${baseName}.${format}`;
+        setDownloadFilename(newFilename);
+      } else {
+        throw new Error("Unexpected response status");
+      }
     } catch (error) {
       console.error("Error during conversion:", error);
+      setError("An error occurred during the video conversion. Please try again."); // Set error message
+    } finally {
+      setIsLoading(false); // Stop loading spinner
     }
   };
 
@@ -80,11 +92,27 @@ export default function ConvertVideo() {
           </select>
         </div>
         <div className="form-group mt-4">
-          <button className="w-full bg-blue-500 text-white p-2 rounded-md" type="submit">
-            Convert
+          <button
+            className="w-full bg-blue-500 text-white p-2 rounded-md flex items-center justify-center"
+            type="submit"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <>
+                <FaSpinner className="animate-spin mr-2" />
+                Converting...
+              </>
+            ) : (
+              "Convert"
+            )}
           </button>
         </div>
       </form>
+      {error && (
+        <div className="form-group mt-4">
+          <p className="text-red-500">{error}</p>
+        </div>
+      )}
       {downloadLink && (
         <div className="form-group mt-4">
           <button className="flex items-center bg-red-500 text-white p-2 rounded-md">
