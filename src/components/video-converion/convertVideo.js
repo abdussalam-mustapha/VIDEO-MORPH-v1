@@ -23,6 +23,12 @@ export default function ConvertVideo() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!file) {
+      setError("No file uploaded");
+      return;
+    }
+
     setIsLoading(true);
     setError(""); 
 
